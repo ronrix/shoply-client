@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 
 import styled from 'styled-components'
 import {colorPalettes} from '../../../config'
@@ -29,6 +29,10 @@ const Card = styled.div`
 	background-color: white;
 	width: 1000px;
 	margin: 0 0.5rem;
+
+	@media (max-width: 377px) {
+		flex-direction: column;
+	}
 `
 
 const FlexCol = styled.div`
@@ -37,6 +41,10 @@ const FlexCol = styled.div`
 	justify-content: space-around;
 	align-items: flex-start;
 	width: 250px;
+
+	@media (max-width: 377px) {
+		order: 2;
+	}
 `
 
 const CardTitle = styled.h3`
@@ -57,7 +65,7 @@ const ArrowLeft = styled(ArrowBarLeft)`
 	left: 0;
 	top: 50%;
 	cursor: pointer;
-	z-index: 1000;
+	z-index: 100; 
 
 	&:hover {
 		color: ${colorPalettes.violet};
@@ -70,43 +78,74 @@ const ArrowRight = styled(ArrowBarRight)`
 	right: 0;
 	top: 50%;
 	cursor: pointer;
-	z-index: 1000;
+	z-index: 100;
 
 	&:hover {
 		color: ${colorPalettes.violet};
 	}
 `
 
+const Img = styled.img`
+	width: 200px;
+
+
+	@media (max-width: 377px) {
+		width: 100%;
+	}
+`
+
 const Popular = () => {
+	const minSwipeDistance = 50 
 	const data = [0,0,0,0,0,0,0]
-	const [scroll, setScroll] = useState({x: 0, count: 2})
+	const [scroll, setScroll] = useState({x: 0})
+	const [swipe, setSwipe] = useState({touchStart: 0, touchEnd: 0})
+
+	// refs
+	const innerRef = useRef(null)
+	const ref = useRef(null)
 
 	function handleRightScroll() {
 		if(scroll.count >= data.length) return
-		setScroll({x: scroll.x + 500 * -1, count: scroll.count + 1})
+		setScroll({x: scroll.x + 500 * -1})
 	}
 
 	function handleLeftScroll() {
 		if(scroll.x >= 0) return
-		setScroll({x: scroll.x + 500, count: scroll.count - 1})
+		setScroll({x: scroll.x + 500})
 	}
 
+	const handleTouchMove = (e) => setSwipe({...swipe, touchEnd: e.targetTouches[0].clientX})
+
+	const handleTouchStart = (e) => setSwipe({touchStart: e.targetTouches[0].clientX})
+	function handleTouchEnd(e) {
+
+		const distance = swipe.touchStart - swipe.touchEnd
+		if(distance < -minSwipeDistance) { // is left swipe 
+			if(innerRef.current.getBoundingClientRect().left >= ref.current.getBoundingClientRect().left) {
+				setScroll({...scroll, x: 0})
+				return
+			}
+			setScroll({...scroll, x: scroll.x - distance}) 
+		}
+		if(distance > minSwipeDistance) { // is right swipe
+			if(innerRef.current.getBoundingClientRect().right <= -ref.current.getBoundingClientRect().right) return 
+			setScroll({...scroll, x: scroll.x + distance * -1}) 
+		}
+	}
 
 	useEffect(() => {
-		console.log(scroll)
+		console.log(innerRef.current.getBoundingClientRect(), ref.current.getBoundingClientRect())
 	}, [scroll])
 
 
 	return (
-		<div style={{marginTop: '4rem', position: 'relative', width: '100%', overflow: 'hidden'}}>
+		<div ref={ref} style={{marginTop: '4rem', position: 'relative', width: '100%', overflow: 'hidden'}} onTouchMove={handleTouchMove} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
 			{
 				scroll.x !== 0 ? <ArrowLeft onClick={handleLeftScroll}/> : null
 			}
-			{
-				scroll.count < data.length ? <ArrowRight onClick={handleRightScroll} /> : null
-			}
+			<ArrowRight onClick={handleRightScroll} /> 
 			<Title>Popular this Week</Title>
-			<Wrapper style={{transform: `translateX(${scroll.x}px)`}}>
+			<Wrapper style={{transform: `translateX(${scroll.x}px)`}} ref={innerRef}>
 			{ data.map((v, id) => (
 				<Card key={id}>
 					<FlexCol>
@@ -120,7 +159,7 @@ const Popular = () => {
 							<CartIcon style={{fontSize: '1.3rem'}}/>
 						</Flex>
 					</FlexCol>
-					<img src={summerWear} alt="popular this week" width="200px" />
+					<Img src={summerWear} alt="popular this week" />
 				</Card>
 			))}
 

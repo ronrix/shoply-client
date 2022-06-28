@@ -10,13 +10,17 @@ import box_icon from '../../../assets/images/colored/box1-icon-colored.png'
 import track_icon from '../../../assets/images/colored/shipping-icon-colored.png'
 
 const DarkWrapper = styled.div`
-	margin: 1rem 0;
+	margin: 4rem 0;
 	width: 100%;
 	height: 300px;
 	background-color: ${colorPalettes.darkBlue};
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	padding: 1rem;
 	position :relative;
+
+	@media (max-width: 515px) {
+		height: auto;
+	}
 `
 
 const H3 = styled.h3`
@@ -31,7 +35,6 @@ const H3 = styled.h3`
 `
 
 const Flex = styled.div`
-	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -40,6 +43,12 @@ const Flex = styled.div`
 	right: 0;
 	left: 0;
 	width: 100%;
+
+	@media (max-width: 515px) {
+		position: static;
+		flex-direction: column;
+		bottom: 0;
+	}
 `
 const Link = styled(Card.Link)`
 	padding: 1rem;
@@ -59,18 +68,28 @@ const Link = styled(Card.Link)`
 	@media (max-width: 666px) {
 		font-size: 0.4rem;
 	}
+	@media (max-width: 515px) {
+		font-size: 0.7rem;
+	}
 `
 
 const InfoCard = styled(Card)`
 	width: 18rem;
 	background-color: ${colorPalettes.light};
-	height: 200px;
+	height: 250px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
 	@media (max-width: 1033px) {
 		width: 13rem;
 	}
 	@media (max-width: 666px) {
 		width: 10rem;
+		height: 200px;
+	}
+	@media (max-width: 515px) {
+		width: 100%;
+		height: auto;
+		margin: 0.5rem 0;
 	}
 `
 
@@ -81,6 +100,9 @@ const Subtitle = styled(Card.Subtitle)`
 	@media (max-width: 666px) {
 		font-size: 0.8rem;
 	}
+	@media (max-width: 515px) {
+		font-size: 1rem;
+	}
 `
 
 const Text = styled(Card.Text)`
@@ -89,6 +111,9 @@ const Text = styled(Card.Text)`
 
 	@media (max-width: 666px) {
 		font-size: 0.5rem;
+	}
+	@media (max-width: 515px) {
+		font-size: 0.7rem;
 	}
 `
 

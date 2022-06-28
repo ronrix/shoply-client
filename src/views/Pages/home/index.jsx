@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import Sidebar from '../../components/Sidebar.jsx'
 import Topbar from '../../components/Topbar.jsx'
 import MainWrapper from '../../components/MainWrapper.jsx'
-import ProductsCarousel from '../../components/ProductsCarousel.jsx'
+import ProductCard from '../../components/ProductCard.jsx'
 import CategoriesBtn from '../../components/CategoriesBtn.jsx'
 import ProductInfo from '../../components/ProductInfo.jsx'
 import DropdownBtn from '../../components/DropdownBtn.jsx'
@@ -15,6 +15,8 @@ import Wrapper from '../../components/Wrapper.jsx'
 import ShoplyInfo from './Info.jsx'
 import Arrivals from './Arrivals.jsx'
 import Popular from './Popular.jsx'
+import DiscountPage from './DiscountPage.jsx'
+import Footer from '../../components/Footer.jsx'
 
 import {colorPalettes} from '../../../config'
 
@@ -44,7 +46,6 @@ const Flex = styled.div`
 	align-items: flex-start;
 	flex-wrap: wrap;
 `
-
 
 const LandingPage = () => {
 
@@ -92,7 +93,7 @@ const LandingPage = () => {
 						</Row>
 					</Wrapper>
 
-					<Wrapper style={{marginTop: '1rem'}}>
+					<Wrapper style={{marginTop: '4rem', maxWidth: '100%'}}>
 						<Row>
 							<h3 style={{fontWeight: 'bolder', color: colorPalettes.darkBlue}}>Category</h3>
 							<Flex>
@@ -100,13 +101,16 @@ const LandingPage = () => {
 							</Flex>
 						</Row>
 						<Row>
-							<ProductsCarousel />
+							<ProductCard products={[1,1,1,1,1,1]} />
 						</Row>
 					</Wrapper>
 
 					<ShoplyInfo />
 					<Arrivals />
 					<Popular />
+					<DiscountPage />
+
+					<Footer />
 				</Form>
 			</Container>
 		</MainWrapper>

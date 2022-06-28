@@ -50,7 +50,7 @@ const CategoriesBtn = () => {
 			  	<ImgIcon src={shoe} alt="shoes"/>
 			  	Shoes</Btn>
 			  <Btn variant="secondary">
-			  	<ImgIcon src={hat} alt="hats"/>
+			  	<ImgIcon src={hat} alt="hats" style={{width: '8%'}}/>
 			  	Hats</Btn>
 			  <Btn variant="secondary">
 			  	<ImgIcon src={tops} alt="tops"/>

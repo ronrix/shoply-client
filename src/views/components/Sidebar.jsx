@@ -22,7 +22,7 @@ const BurgerBtn = styled.div`
 	width: 50px;
 	height: 40px;
 	position: absolute;
-	right: 0;
+	right: ${props => props.show ? '0' : '-50px'};
 	top: 0;
 `
 
@@ -45,7 +45,7 @@ const InsideWrapper = styled.div`
 	z-index: 1000;
 	background-color: ${props => props.show ? 'white': 'transparent'};
 	width: 200px;
-	transform: translateX(${props => props.show ? 0 : -150}px);
+	transform: translateX(${props => props.show ? 0 : -200}px);
 	transition: transform 200ms ease-in-out;
 `
 
@@ -75,7 +75,7 @@ const Sidebar = () => {
 	return(
 		<Wrapper show={showNavs}>
 			<InsideWrapper show={showNavs}>
-				<BurgerBtn onClick={handleShowNav}>
+				<BurgerBtn onClick={handleShowNav} show={showNavs}>
 					<Line clicked={showNavs} first/>
 					<Line clicked={showNavs} second/>
 					<Line clicked={showNavs} third/>
