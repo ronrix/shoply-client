@@ -5,9 +5,6 @@ import {Container} from 'react-bootstrap'
 import {CaretRightFill, CaretDownFill} from 'react-bootstrap-icons'
 
 import {colorPalettes} from '../../../config'
-import profile from '../../../assets/images/Model-PNG.png'
-import product1 from '../../../assets/images/sleevless.png'
-
 import Sidebar from '../../components/Sidebar.jsx'
 import Topbar from '../../components/Topbar.jsx'
 
@@ -143,7 +140,7 @@ const Profile = () => {
 				<ContentWrapper>
 
 					<TopContent>
-						<ProfileImgWrapper><img src={profile} alt="profile" style={{width: '150px'}}/></ProfileImgWrapper>
+						<ProfileImgWrapper><img src={'./assets/images/Model-PNG.png'} alt="profile" style={{width: '150px'}}/></ProfileImgWrapper>
 						<Wrapper style={{marginLeft: '1rem'}}>
 							<Name>Ronrix Lante</Name>
 							<p style={{color: 'white', fontWeight: 'bold'}}>ronrixl5@gmail.com</p>
@@ -172,7 +169,7 @@ const Profile = () => {
 											date: 1910 192910
 										</div>
 									</ProductInfo>
-									<img src={product1} alt="product 1" />
+									<img src={'assets/images/sleevless.png'} alt="product 1" />
 								</Product>
 
 								<Product>
@@ -182,7 +179,7 @@ const Profile = () => {
 											date: 1910 192910
 										</div>
 									</ProductInfo>
-									<img src={product1} alt="product 1" />
+									<img src={'assets/images/sleevless.png'} alt="product 1" />
 								</Product>
 							</ProductWrapper>
 						</Wrapper>

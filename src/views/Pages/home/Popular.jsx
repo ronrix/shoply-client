@@ -7,9 +7,6 @@ import {ArrowBarLeft, ArrowBarRight} from 'react-bootstrap-icons'
 import ShopBtn from '../../components/ShopBtn.jsx'
 import {HeartIcon, CartIcon} from '../../components/Icons.jsx'
 
-// image
-import summerWear from '../../../assets/images/summer-wear-for-ladies.jpeg'
-
 const Wrapper = styled.div`
 	display: flex;
 	width: 1200px;
@@ -115,8 +112,8 @@ const Popular = () => {
 	}
 
 	const handleTouchMove = (e) => setSwipe({...swipe, touchEnd: e.targetTouches[0].clientX})
-
 	const handleTouchStart = (e) => setSwipe({touchStart: e.targetTouches[0].clientX})
+
 	function handleTouchEnd(e) {
 
 		const distance = swipe.touchStart - swipe.touchEnd
@@ -134,7 +131,6 @@ const Popular = () => {
 	}
 
 	useEffect(() => {
-		console.log(innerRef.current.getBoundingClientRect(), ref.current.getBoundingClientRect())
 	}, [scroll])
 
 
@@ -143,7 +139,7 @@ const Popular = () => {
 			{
 				scroll.x !== 0 ? <ArrowLeft onClick={handleLeftScroll}/> : null
 			}
-			<ArrowRight onClick={handleRightScroll} /> 
+			{scroll.x === -((data.length * 500) - 1000)  ? null : <ArrowRight onClick={handleRightScroll} />} 
 			<Title>Popular this Week</Title>
 			<Wrapper style={{transform: `translateX(${scroll.x}px)`}} ref={innerRef}>
 			{ data.map((v, id) => (
@@ -159,7 +155,7 @@ const Popular = () => {
 							<CartIcon style={{fontSize: '1.3rem'}}/>
 						</Flex>
 					</FlexCol>
-					<Img src={summerWear} alt="popular this week" />
+					<Img src={'assets/images/summer-wear-for-ladies.jpeg'} alt="popular this week" />
 				</Card>
 			))}
 

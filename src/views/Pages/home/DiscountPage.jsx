@@ -5,8 +5,6 @@ import {colorPalettes} from '../../../config'
 
 import MainWrapper from '../../components/MainWrapper'
 
-// image
-import discountModel from '../../../assets/images/shopping_model.png'
 
 const InnerDiv = styled.div`
 	display: flex;
@@ -24,6 +22,10 @@ const Button = styled.button`
 	font-weight: bolder;
 	font-family: Montserrat, sans-serif;
 	margin-top: 1rem;
+
+	&:hover {
+		background-color: ${colorPalettes.violet};
+	}
 `
 const Img = styled.img`
 	width: 250px;
@@ -58,7 +60,7 @@ const DiscountPage = () => {
 					<Button>Shop Now</Button>
 				</div>
 				<div></div>
-				<Img src={discountModel} alt="discount model"/>
+				<Img src={'assets/images/shopping_model.png'} alt="discount model"/>
 			</InnerDiv>
 		</MainWrapper>
 	)

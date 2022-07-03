@@ -3,8 +3,6 @@ import React from 'react'
 import styled from 'styled-components'
 import {colorPalettes} from '../../../config'
 
-import thumbnail_1 from '../../../assets/images/summer-outfit.png'
-import thumbnail_2 from '../../../assets/images/black-beauty.png'
 
 const WrapperFlex = styled.div`
 	display: flex;
@@ -114,7 +112,7 @@ const Arrivals = () => {
 					<BrowseBtn>Browse Collection</BrowseBtn>
 				</FlexCol>
 				<ImgWrapper>
-					<img src={thumbnail_2} alt="thumnail" width='100%' />
+					<img src={'assets/images/black-beauty.png'} alt="thumnail" width='100%' />
 				</ImgWrapper>
 			</Card>
 
@@ -130,7 +128,7 @@ const Arrivals = () => {
 					<BrowseBtn>Browse Collection</BrowseBtn>
 				</FlexCol>
 				<ImgWrapper>
-					<img src={thumbnail_1} alt="thumnail" width='100%' />
+					<img src={ 'assets/images/summer-outfit.png'} alt="thumnail" width='100%' />
 				</ImgWrapper>
 			</Card>
 		</WrapperFlex>

@@ -12,6 +12,7 @@ const Title = styled.h1`
 	font-weight: bolder;
 	font-family: Montserrat, sans-serif;
 	font-size: 2rem;
+	cursor: pointer;
 
 	@media(max-width: 714px) {
 		font-size: 1.5rem;
@@ -66,11 +67,16 @@ const Input = styled.input`
 
 	transition: transform 300ms ease-in;
 	transform: ${props => props.search ? 'translateX(0)': 'translateX(500px)'};
+
+	@media (max-width: 612px) {
+		
+	}
 `
 
 const SearchIcon = styled(Search)`
 	font-size: 1.7rem;
 	cursor: pointer;
+	text-decoration: none;
 
 	&:hover{
 		color: ${colorPalettes.violet};
@@ -80,6 +86,7 @@ const SearchIcon = styled(Search)`
 const CartIcon = styled(Cart)`
 	font-size: 1.7rem;
 	cursor: pointer;
+	text-decoration: none;
 
 	&:hover{
 		color: ${colorPalettes.violet};
@@ -94,7 +101,7 @@ const PersonIcon = styled(Person)`
 	}
 `
 
-const Topbar = ({isLandingPage}) => {
+const Topbar = ({searchPage, isLandingPage}) => {
 
 	const [isSearch, setIsSearch] = useState(false)
 	const [searchValue, setSearchValue] = useState('')
@@ -109,18 +116,18 @@ const Topbar = ({isLandingPage}) => {
 
 	return (
 		<MainWrapper>
-			<Title>Shoply.</Title>
+			<Link to="/" style={{textDecoration: 'none', color: colorPalettes.darkBlue}}><Title>Shoply.</Title></Link>
 			<InputWrapper>
-				<Input type="text" placeholder="type in here...." search={isSearch} value={searchValue} onChange={handleSearchInput}/>
+				<Input type="text" placeholder="Type in here...." search={searchPage ? true : isSearch} value={searchValue} onChange={handleSearchInput}/>
 			</InputWrapper>
 			<Div>
 				<SearchIcon onClick={handleIsSearch}/>
-				<CartIcon />
+				<Link to="/app/cart" style={{textDecoration: 'none', color: 'black'}}> <CartIcon /> </Link>
 				{isLandingPage ? (
 					<Link to='/login'>
 						<NButton style={{marginLeft: '1rem'}}>Login</NButton>
 					</Link>)
-					 : <PersonIcon /> }
+					 : <Link to="/app/profile" style={{textDecoration: 'none', color: 'black'}}><PersonIcon /></Link> }
 			</Div>
 		</MainWrapper>
 	)

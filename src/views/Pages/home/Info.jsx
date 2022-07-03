@@ -4,10 +4,6 @@ import {Card} from 'react-bootstrap'
 import styled from 'styled-components'
 import {colorPalettes} from '../../../config'
 
-// image icons
-import best_price from '../../../assets/images/colored/best-price-icon-colored.png'
-import box_icon from '../../../assets/images/colored/box1-icon-colored.png'
-import track_icon from '../../../assets/images/colored/shipping-icon-colored.png'
 
 const DarkWrapper = styled.div`
 	margin: 4rem 0;
@@ -125,7 +121,7 @@ const ShoplyInfo = () => {
 			<Flex>
 				<InfoCard>
 					<Card.Body>
-					   <Card.Title><img src={box_icon} style={{width: '10%'}} alt="box icon"/></Card.Title>
+					   <Card.Title><img src={'assets/images/colored/box1-icon-colored.png'} style={{width: '10%'}} alt="box icon"/></Card.Title>
 					   <Subtitle className="mb-2 fw-bolder">Latest Styles</Subtitle>
 					   <Text className="fw-bolder"> Our design helps to follow the latest fashion Enjoy the best prices for high quality </Text>
 					</Card.Body>
@@ -134,7 +130,7 @@ const ShoplyInfo = () => {
 
 				<InfoCard>
 				  <Card.Body>
-				    <Card.Title><img src={best_price} style={{width: '10%'}}  alt="best price icon"/></Card.Title>
+				    <Card.Title><img src={'assets/images/colored/best-price-icon-colored.png'} style={{width: '10%'}}  alt="best price icon"/></Card.Title>
 				    <Subtitle className="mb-2 text-muted fw-bolder" >Best Prices</Subtitle>
 				    <Text className="fw-bolder"> Enjoy the best prices for high quality styles to help you stay updated with clothing and more. </Text>
 				  </Card.Body>
@@ -143,7 +139,7 @@ const ShoplyInfo = () => {
 
 				<InfoCard>
 				  <Card.Body>
-				    <Card.Title><img src={track_icon} style={{width: '10%'}} alt="track icon"/></Card.Title>
+				    <Card.Title><img src={'assets/images/colored/shipping-icon-colored.png'} style={{width: '10%'}} alt="track icon"/></Card.Title>
 				    <Subtitle className="mb-2 text-muted fw-bolder">Free Shipping</Subtitle>
 				    <Text  className="fw-bolder" > We provide shipping locally you can order from your local anywhere anytime</Text>
 				  </Card.Body>

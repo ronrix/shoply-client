@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
 import {StarFill} from 'react-bootstrap-icons'
 import {colorPalettes} from '../../config'
-import sample from '../../assets/images/shirt-on-chair.png'
 
 import {HeartIcon, CartIcon} from './Icons.jsx'
 import {ArrowLeft, ArrowRight} from 'react-bootstrap-icons'
@@ -80,25 +80,28 @@ const ArrowR = styled(ArrowRight)`
 	z-index: 100;
 `
 
-const TheCard = () => {
+const TheCard = ({handleLinkToProduct, id}) => {
+
 	return (
-		<Card>
-			<Img src={sample} alt="product thumbnail"/>
-			<Overlay>
-				<div>
-					<h5 style={{fontWeight: 'bolder'}}>Sharpee A1</h5>
+		<Link to={`/product/${id}`}>
+			<Card onClick={handleLinkToProduct}>
+				<Img src={'assets/images/shirt-on-chair.png'} alt="product thumbnail"/>
+				<Overlay>
+					<div>
+						<h5 style={{fontWeight: 'bolder'}}>Sharpee A1</h5>
+						<Flex>
+							<StarFill />
+							<span style={{marginLeft: '0.5rem'}}>4.7</span>
+						</Flex>
+					</div>
 					<Flex>
-						<StarFill />
-						<span style={{marginLeft: '0.5rem'}}>4.7</span>
+						<h6 style={{fontWeight: 'bolder'}}>Php 500</h6>
+						<HeartIcon style={{fontSize: '1.2rem'}}/>
+						<CartIcon style={{fontSize: '1.2rem'}}/>
 					</Flex>
-				</div>
-				<Flex>
-					<h6 style={{fontWeight: 'bolder'}}>Php 500</h6>
-					<HeartIcon style={{fontSize: '1.2rem'}}/>
-					<CartIcon style={{fontSize: '1.2rem'}}/>
-				</Flex>
-			</Overlay>
-		</Card>
+				</Overlay>
+			</Card>
+		</Link>
 	)
 }
 
@@ -136,6 +139,10 @@ const ProductCard = ({products}) => {
 		}
 	}
 
+	function handleLinkToProduct() {
+		console.log('link to /product')
+	}
+
 	return (
 		<WrapperOverflow style={{marginTop: '1rem'}}>
 			{
@@ -143,7 +150,7 @@ const ProductCard = ({products}) => {
 			}
 			<div style={{overflow: 'hidden'}} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} onTouchMove={handleTouchMove}>
 				<ProductCardWrapper style={{transform: `translateX(${scroll.x}px)`}}>
-					{products.map((a,i) => <TheCard key={i} />)}
+					{products.map((a,i) => <TheCard key={i} handleLinkToProduct={handleLinkToProduct} id={i} />)}
 				</ProductCardWrapper>
 			</div>
 			{

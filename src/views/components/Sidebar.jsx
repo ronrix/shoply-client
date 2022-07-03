@@ -3,10 +3,12 @@ import React, {useState} from 'react'
 import styled from 'styled-components'
 import {colorPalettes} from '../../config'
 
+
 const Wrapper = styled.div`
 	width: ${props => props.show ? 200 : 50}px;
 	background-color: transparent;
 	position: relative;
+	transition: width 150ms ease-in;
 
 	@media (max-width: 400px) {
 		width: 0;
@@ -64,6 +66,7 @@ const List = styled.li`
 	}
 `
 
+
 const Sidebar = () => {
 
 	const [showNavs, setShowNavs] = useState(false)
@@ -86,6 +89,7 @@ const Sidebar = () => {
 					<List>Menu</List>
 				</ListContainer>
 			</InsideWrapper>
+
 		</Wrapper>
 	)
 }

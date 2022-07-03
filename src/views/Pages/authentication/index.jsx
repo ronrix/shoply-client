@@ -6,10 +6,6 @@ import {Google} from 'react-bootstrap-icons'
 
 import {colorPalettes} from '../../../config'
 
-// images
-import share1 from '../../../assets/images/share-1.png'
-import share2 from '../../../assets/images/share-2.png'
-
 const MainWrapper = styled.div`
 	display: flex;
 	height: 100vh;
@@ -128,8 +124,8 @@ const Authentication = () => {
 				<h2 style={{fontWeight: 'bolder'}}>Shop Now!</h2>
 
 				<div>
-					<Img one src={share1} alt="first one"/>
-					<Img src={share2} alt="second one"/>
+					<Img one src={'assets/images/share-1.png'} alt="first one"/>
+					<Img src={'assets/images/share-2.png'} alt="second one"/>
 				</div>
 			</RightSide>
 		</MainWrapper>
